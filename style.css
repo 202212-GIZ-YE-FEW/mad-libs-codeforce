@@ -1,3 +1,52 @@
-/**
- * Your CSS goes here.
- */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(Images/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+span{
+
+}
+
+#logo{
+    width: 20%;
+    height: 20%;
+}
+.contanier{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.item{
+    height: 25rem;
+    width: 50rem;
+    justify-content: center;
+    align-items: center;
+    background-image: url(Images/Jumanji-Box.png);
+    background-size: 50rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text{
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+}
+
+.contanierTwo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
