@@ -46,6 +46,8 @@ function parseStory(rawStory) {
                 // storyOjb.push({word: ','})
                 Object.assign(storyOjb, {word: rawStoryElement, pos: pos})
                 Object.assign(storyOjb, {word: ','})
+
+                console.log(storyOjb)
             }
             else{
 
@@ -65,5 +67,6 @@ function parseStory(rawStory) {
  * You'll want to use the results of parseStory() to display the story on the page.
  */
 getRawStory().then(parseStory).then((processedStory) => {
-    console.log(processedStory);
+    // console.log(processedStory);
+    let madLibsEdit = document.getElementsByClassName("madLibsEdit")
 });
