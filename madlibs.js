@@ -28,7 +28,17 @@
  */
 function parseStory(rawStory) {
   // Your code here.
-  return {}; // This line is currently wrong :)
+  // return {}; // This line is currently wrong :)
+
+  const regex = /[(v|adj)]$/;
+  for (const rawStoryElement of rawStory.split(' ')) {
+    if(regex.test(rawStoryElement))
+      console.log(rawStoryElement)
+    // var regex = /[(v|adv)]$/;
+
+
+  }
+  console.log(rawStory)
 }
 
 /**
