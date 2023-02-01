@@ -35,16 +35,16 @@ function parseStory(rawStory) {
     const rawStoryElement = rawStory.split(' ')
     //   
     const object = rawStoryElement.map((word) => {
-        // console.log(word.match(regex))
+
         const onlyWord = word.replace(word.match(regex), "");
 
         let posType = word.match(regex);
-        // console.log(posSign)
+
         if (posType === null) {
             return { word: onlyWord };
         }
         //    match return  an array
-        // console.log(posType[0]);
+        // console.log(posType);
         posType = posType[0];
         switch (posType) {
             case "[n]":
@@ -64,44 +64,35 @@ const edit = document.querySelector(".madLibsEdit");
 const preview = document.querySelector(".madLibsPreview");
 
 function show(processedStory) {
+    let inputStory = ''
+    let showStory = ''
     processedStory.forEach(element => {
         if (element.pos) {
-            // console.log(element.pos) add input in edit div
-            let inputElement = document.createElement("input");
-            inputElement.type = "text";
-            inputElement.maxLength = 20;
-            inputElement.placeholder = `${element.pos}`;
-            inputElement.classList.add("inputEle");
-            edit.appendChild(inputElement);
-            // add span in preview div
-            let previewEle = document.createElement("span");
-            previewEle.innerHTML = `(${element.pos}) `;
-            previewEle.classList.add("previewEle");
-            preview.appendChild(previewEle);
+            let input = `<input type="text" maxlength="20" placeholder="${element.pos}">`
+            inputStory+= input;
+            showStory += `<span class="previewElement">[${element.pos}]</span>`
         }
         else {
-            //  
-            let textEditElement = document.createElement("span");
-            textEditElement.innerText = `${element.word} `;
-            let textPreviewElement = document.createElement("span");
-            textPreviewElement.innerText = `${element.word} `;
-            edit.appendChild(textEditElement);
-            preview.appendChild(textPreviewElement);
-
+            inputStory += element.word+" "
+            showStory += ` ${element.word} `
         }
+        edit.innerHTML = inputStory
+        preview.innerHTML = showStory
+
     });
+
+
 }
 
 
 // console.log(inputs);
 function fillBlank() {
-    const inputs = document.querySelectorAll(".inputEle");
-    const blanks = document.querySelectorAll(".previewEle");
-    // console.log("hi")
-    inputs.forEach((ele, i) => {
-        // console.log(`${ele} ${i}`)
-        ele.addEventListener("input", (e) => {
-            blanks[i].innerHTML = e.target.value;
+    const inputs = document.querySelectorAll("input");
+    const blanks = document.querySelectorAll(".previewElement");
+
+    inputs.forEach((input, i) => {
+        input.addEventListener("input", (e) => {
+            blanks[i].textContent = e.target.value;
         });
     });
 }
