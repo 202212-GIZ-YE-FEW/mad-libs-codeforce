@@ -24,8 +24,8 @@ input {
 }
 
 input:focus {
-    box-shadow: 0 0 5px 1px white;
-    transform: translateY(-3px);
+    box-shadow: 0 0 5px 1px #1f2405;
+    transform: translateY(-3px) scale(1.05);
 }
 
 
