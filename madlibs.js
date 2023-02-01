@@ -115,7 +115,14 @@ for (const button of buttons) {
     });
 }
 confirmBtn.addEventListener('click', function (e){
-
+    const modal = document.getElementById('modal')
+    const overlay = document.getElementById('overlay')
+    modal.classList.add('showModal')
+    overlay.classList.add('overlay')
+    overlay.addEventListener('click', function (e){
+        modal.classList.remove('showModal')
+        overlay.classList.remove('overlay')
+    })
 })
 
 
