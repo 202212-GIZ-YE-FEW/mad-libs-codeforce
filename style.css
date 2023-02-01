@@ -31,6 +31,25 @@ input:focus{
 input::placeholder{
     color: white;
 }
+button{
+    cursor: pointer;
+    background-color: transparent;
+    background-size: cover;
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    transition: .3s;
+}
+button.clicked{
+    transform: scale(.9);
+}
+button:first-child{
+    background-image: url("Images/confirm.png");
+}
+button:nth-child(2){
+    background-image: url("Images/cancel.png");
+}
+
 
 .logo-container{
     width: 20%;
@@ -75,7 +94,7 @@ input::placeholder{
 .item:nth-child(2){
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     height: 1rem;

@@ -102,6 +102,23 @@ function fillBlank() {
     });
 }
 
+const confirmBtn = document.getElementById('confirmBtn')
+const cancelBtn = document.getElementById('cancelBtn')
+const buttons = document.getElementsByTagName('button')
+for (const button of buttons) {
+
+    button.addEventListener("mousedown", function() {
+        button.classList.add("clicked");
+    });
+    button.addEventListener("mouseup", function() {
+        button.classList.remove("clicked");
+    });
+}
+confirmBtn.addEventListener('click', function (e){
+
+})
+
+
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
  * the `then` and `async` syntax for now.
