@@ -9,10 +9,14 @@
 </head>
 
 <body>
-<div class="logo-container">
-    <img src="Images/logo.webp" alt="logo" id="logo">
-</div>
 
+    <audio  autoplay>
+        <source id="audio" src="audio/Jumanji.mp3">
+    </audio>
+
+    <div class="logo-container">
+        <img src="Images/logo.webp" alt="logo" id="logo">
+    </div>
 
 <div class="contanier">
 
@@ -22,17 +26,18 @@
     </div>
 
     <div class="item">
-        <img src="Images/confirm.png" alt="true">
-        <img src="Images/repeat.png" alt="again">
-        <img src="Images/cancel.png" alt="false">
+        <button type="button" id="confirmBtn"></button>
+        <button id="cancelBtn"></button>
     </div>
 
-    <div class="item">
-        <div class="text madLibsPreview">
-        </div>
+    <div class="item" id="modal">
+        <div class="text madLibsPreview"></div>
     </div>
+
+    <span id="overlay"></span>
+
+</div>
 <script src="do-not-touch.js"></script>
 <script src="madlibs.js"></script>
 </body>
-
 </html>
