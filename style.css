@@ -20,7 +20,14 @@ input{
     background-color: #580d06;
     color: white;
     padding: 3px;
+    transition: .3s;
 }
+
+input:focus{
+    box-shadow: 0 0 5px 1px white;
+    transform: translateY(-3px);
+}
+
 input::placeholder{
     color: white;
 }

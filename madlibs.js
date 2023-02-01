@@ -94,8 +94,14 @@ function fillBlank() {
         input.addEventListener("input", (e) => {
             blanks[i].textContent = e.target.value;
         });
+        input.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                inputs[i+1].focus()
+            }
+        });
     });
 }
+
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
  * the `then` and `async` syntax for now.
