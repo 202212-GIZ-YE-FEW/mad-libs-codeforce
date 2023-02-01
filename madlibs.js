@@ -124,6 +124,7 @@ function fillBlank() {
  */
 getRawStory().then(parseStory).then((processedStory) => {
     show(processedStory)
-    // console.log(processedStory);
+    // // console.log(processedStory);
     fillBlank()
+    let madLibsEdit = document.getElementsByClassName("madLibsEdit")
 });
