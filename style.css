@@ -65,6 +65,11 @@ input::placeholder{
     padding: 5rem;
     line-height: 25px;
     text-indent: 30px;
+    width: 53rem;
+    font-family: cursive;
+    font-size: small;
+    font-weight: 500;
+    color: #580d06;
 }
 .previewElement {
     color: #580d06;
