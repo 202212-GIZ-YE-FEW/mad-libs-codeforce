@@ -33,20 +33,28 @@ function parseStory(rawStory) {
 
     const regex = /\[[anvo]\]/;
     // change srting to array
+
+    // to split the story text based on the spaces between words and store them in a new array
     const rawStoryElement = rawStory.split(' ')
 
-    const object = rawStoryElement.map((word) => {
+    // loops the array of words to check if they contain the required pattern specified in the regex
+    return rawStoryElement.map((word) => {
 
+        // to get only words without the regex validated text ex. Alan[a] => Alan
         const onlyWord = word.replace(word.match(regex), "");
 
+        // to get the validated text (part of speech) by regex ex. [a]
         let posType = word.match(regex);
 
+        // if posType is null it means that the word didn't contain a part of speech, therefore exit function with a word object
         if (posType === null) {
             return { word: onlyWord };
         }
-        //    match return  an array
-        // console.log(posType);
+
+        // to get the needed form of part of speech ([a]) which is going to be stored at the first position in the array
         posType = posType[0];
+
+        // to specify the details of the 'word with pos' object based on pos value
         switch (posType) {
             case "[n]":
                 return { word: onlyWord, pos: "noun" };
@@ -59,34 +67,37 @@ function parseStory(rawStory) {
         }
     });
 
-    return object;
 }
+
+// pick up the items in which the story is going to be viewed as preview and edit
 const edit = document.querySelector(".madLibsEdit");
 const preview = document.querySelector(".madLibsPreview");
 
+// replaces
 function show(processedStory) {
     let inputStory = ''
     let showStory = ''
+    // loop through the processedStory object
     processedStory.forEach(element => {
+        // check for the existence of pos, if existed make an input for the input story section and a span for the preview story section
         if (element.pos) {
             let input = `<input type="text" maxlength="20" placeholder="${element.pos}">`
             inputStory += input;
             showStory += `<span class="previewElement">[${element.pos}]</span>`
         }
+        // if the object doesn't contain a pos, then add the word contained in the object as it is
         else {
-            inputStory += element.word + " "
+            inputStory += ` ${element.word} `
             showStory += ` ${element.word} `
         }
-        edit.innerHTML = inputStory
-        preview.innerHTML = showStory
-
     });
 
-
+    // inject the stories generated from the loop above into their tags
+    edit.innerHTML = inputStory
+    preview.innerHTML = showStory
 }
 
-
-
+// Live update: Whenever the user updates a blank in the edit view, it updates the preview any time a new character is typed
 function fillBlank() {
     const inputs = document.querySelectorAll("input");
     const blanks = document.querySelectorAll(".previewElement");
@@ -103,18 +114,11 @@ function fillBlank() {
     });
 }
 
+// adding actions for the confirm and cancel buttons
 const confirmBtn = document.getElementById('confirmBtn')
 const cancelBtn = document.getElementById('cancelBtn')
-const buttons = document.getElementsByTagName('button')
-for (const button of buttons) {
 
-    button.addEventListener("mousedown", function () {
-        button.classList.add("clicked");
-    });
-    button.addEventListener("mouseup", function () {
-        button.classList.remove("clicked");
-    });
-}
+// to show the preview story when the confirm button is clicked
 confirmBtn.addEventListener('click', function (e) {
     const modal = document.getElementById('modal')
     const overlay = document.getElementById('overlay')
@@ -125,18 +129,25 @@ confirmBtn.addEventListener('click', function (e) {
         overlay.classList.remove('overlay')
     })
 })
+
+// clears all the inputs whenever cancel button in clicked
 cancelBtn.addEventListener('click', function (e) {
-   
     const inputs = document.querySelectorAll("input");
-   
     inputs.forEach((input) => {
-        
-        input.value = "";
-
+        input.value = ""
     })
-
-
 })
+
+// adds clicking animation whenever a button is clicked
+const buttons = document.getElementsByTagName('button')
+for (const button of buttons) {
+    button.addEventListener("mousedown", function () {
+        button.classList.add("clicked");
+    });
+    button.addEventListener("mouseup", function () {
+        button.classList.remove("clicked");
+    });
+}
 
 
 /**
