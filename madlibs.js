@@ -69,11 +69,11 @@ function show(processedStory) {
     processedStory.forEach(element => {
         if (element.pos) {
             let input = `<input type="text" maxlength="20" placeholder="${element.pos}">`
-            inputStory+= input;
+            inputStory += input;
             showStory += `<span class="previewElement">[${element.pos}]</span>`
         }
         else {
-            inputStory += element.word+" "
+            inputStory += element.word + " "
             showStory += ` ${element.word} `
         }
         edit.innerHTML = inputStory
@@ -85,7 +85,7 @@ function show(processedStory) {
 }
 
 
-// console.log(inputs);
+
 function fillBlank() {
     const inputs = document.querySelectorAll("input");
     const blanks = document.querySelectorAll(".previewElement");
@@ -96,7 +96,7 @@ function fillBlank() {
         });
         input.addEventListener("keypress", (event) => {
             if (event.key === "Enter") {
-                inputs[i+1].focus()
+                inputs[i + 1].focus()
             }
         });
     });
@@ -107,22 +107,34 @@ const cancelBtn = document.getElementById('cancelBtn')
 const buttons = document.getElementsByTagName('button')
 for (const button of buttons) {
 
-    button.addEventListener("mousedown", function() {
+    button.addEventListener("mousedown", function () {
         button.classList.add("clicked");
     });
-    button.addEventListener("mouseup", function() {
+    button.addEventListener("mouseup", function () {
         button.classList.remove("clicked");
     });
 }
-confirmBtn.addEventListener('click', function (e){
+confirmBtn.addEventListener('click', function (e) {
     const modal = document.getElementById('modal')
     const overlay = document.getElementById('overlay')
     modal.classList.add('showModal')
     overlay.classList.add('overlay')
-    overlay.addEventListener('click', function (e){
+    overlay.addEventListener('click', function (e) {
         modal.classList.remove('showModal')
         overlay.classList.remove('overlay')
     })
+})
+cancelBtn.addEventListener('click', function (e) {
+   
+    const inputs = document.querySelectorAll("input");
+   
+    inputs.forEach((input) => {
+        
+        input.value = "";
+
+    })
+
+
 })
 
 
