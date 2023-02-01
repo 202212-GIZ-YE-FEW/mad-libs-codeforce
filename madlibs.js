@@ -26,6 +26,7 @@
  * There are multiple ways to do this, but you may want to use regular expressions.
  * Please go through this lesson: https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/
  */
+
 function parseStory(rawStory) {
     // Your code here.
     // return {}; // This line is currently wrong :)
@@ -33,7 +34,7 @@ function parseStory(rawStory) {
     const regex = /\[[anvo]\]/;
     // change srting to array
     const rawStoryElement = rawStory.split(' ')
-    //   
+
     const object = rawStoryElement.map((word) => {
 
         const onlyWord = word.replace(word.match(regex), "");
