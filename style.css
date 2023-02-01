@@ -10,6 +10,21 @@ body{
     background-repeat: no-repeat;
 }
 
+input{
+    width: 5rem;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    text-align: center;
+    margin-inline: .4rem;
+    background-color: #580d06;
+    color: white;
+    padding: 3px;
+}
+input::placeholder{
+    color: white;
+}
+
 .logo-container{
     width: 20%;
     height: 20%;
@@ -29,20 +44,25 @@ body{
 }
 
 .item{
-    height: 25rem;
-    width: 50rem;
+    height: 28rem;
+    width: 55rem;
     justify-content: center;
     align-items: center;
     background-image: url(Images/Jumanji-Box.png);
-    background-size: 50rem;
+    background-size: 55rem;
     display: flex;
     flex-wrap: wrap;
 }
 
-.text{
-    justify-content: center;
-    align-items: center;
+.text {
     padding: 5rem;
+    line-height: 25px;
+    text-indent: 30px;
+}
+.previewElement {
+    color: #580d06;
+    font-weight: bolder;
+    border-radius: 5px;
 }
 
 .item:nth-child(2){
