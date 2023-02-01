@@ -28,9 +28,7 @@ input:focus {
     transform: translateY(-3px);
 }
 
-input::placeholder {
-    color: white;
-}
+
 
 button:hover {
     transform: translateY(-3px) scale(1.05);
