@@ -46,27 +46,16 @@ function parseStory(rawStory) {
         //    match return  an array
         // console.log(posType[0]);
         posType = posType[0];
-        // 
         switch (posType) {
             case "[n]":
                 return { word: onlyWord, pos: "noun" };
             case "[v]":
-                return {
-                    word: onlyWord, pos: "verb"
-                };
+                return { word: onlyWord, pos: "verb" };
             case "[a]":
-                return {
-                    word: onlyWord, pos: "adjective"
-                };
-
-
+                return { word: onlyWord, pos: "adjective" };
             case "[o]":
-                return {
-                    word: onlyWord, pos: "object"
-                };
-
+                return { word: onlyWord, pos: "object" };
         }
-        //
     });
 
     return object;
