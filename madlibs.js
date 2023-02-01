@@ -30,34 +30,92 @@ function parseStory(rawStory) {
     // Your code here.
     // return {}; // This line is currently wrong :)
 
-    const regex = /\[[navo]\]/;
-    const storyOjb = {}
-    for (const rawStoryElement of rawStory.split(' ')) {
-        if (regex.test(rawStoryElement)) {
-            const index1 = rawStoryElement.indexOf('[')
-            const index2 = rawStoryElement.indexOf(']')
-            let pos = rawStoryElement;
-            pos = pos.slice(index1+1, index2);
-            // console.log(pos)
-            // console.log(rawStoryElement)
+    const regex = /\[[anvo]\]/;
+    // change srting to array
+    const rawStoryElement = rawStory.split(' ')
+    //   
+    const object = rawStoryElement.map((word) => {
+        // console.log(word.match(regex))
+        const onlyWord = word.replace(word.match(regex), "");
 
-            if (rawStoryElement.endsWith(",")) {
-                // storyOjb.push({word: rawStoryElement, pos: 'o'})
-                // storyOjb.push({word: ','})
-                Object.assign(storyOjb, {word: rawStoryElement, pos: pos})
-                Object.assign(storyOjb, {word: ','})
-            }
-            else{
-
-            }
-        } else {
-            // console.log(rawStoryElement)
+        let posType = word.match(regex);
+        // console.log(posSign)
+        if (posType === null) {
+            return { word: onlyWord };
         }
+        //    match return  an array
+        // console.log(posType[0]);
+        posType = posType[0];
+        // 
+        switch (posType) {
+            case "[n]":
+                return { word: onlyWord, pos: "noun" };
+            case "[v]":
+                return {
+                    word: onlyWord, pos: "verb"
+                };
+            case "[a]":
+                return {
+                    word: onlyWord, pos: "adjective"
+                };
 
-    }
-    console.log(storyOjb)
+
+            case "[o]":
+                return {
+                    word: onlyWord, pos: "object"
+                };
+
+        }
+        //
+    });
+
+    return object;
+}
+const edit = document.querySelector(".madLibsEdit");
+const preview = document.querySelector(".madLibsPreview");
+
+function show(processedStory) {
+    processedStory.forEach(element => {
+        if (element.pos) {
+            // console.log(element.pos) add input in edit div
+            let inputElement = document.createElement("input");
+            inputElement.type = "text";
+            inputElement.maxLength = 20;
+            inputElement.placeholder = `${element.pos}`;
+            inputElement.classList.add("inputEle");
+            edit.appendChild(inputElement);
+            // add span in preview div
+            let previewEle = document.createElement("span");
+            previewEle.innerHTML = `(${element.pos}) `;
+            previewEle.classList.add("previewEle");
+            preview.appendChild(previewEle);
+        }
+        else {
+            //  
+            let textEditElement = document.createElement("span");
+            textEditElement.innerText = `${element.word} `;
+            let textPreviewElement = document.createElement("span");
+            textPreviewElement.innerText = `${element.word} `;
+            edit.appendChild(textEditElement);
+            preview.appendChild(textPreviewElement);
+
+        }
+    });
 }
 
+
+// console.log(inputs);
+function fillBlank() {
+    const inputs = document.querySelectorAll(".inputEle");
+    const blanks = document.querySelectorAll(".previewEle");
+    // console.log("hi")
+    inputs.forEach((ele, i) => {
+        // console.log(`${ele} ${i}`)
+        ele.addEventListener("input", (e) => {
+            blanks[i].innerHTML = e.target.value;
+        });
+    });
+}
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
  * the `then` and `async` syntax for now.
@@ -65,5 +123,7 @@ function parseStory(rawStory) {
  * You'll want to use the results of parseStory() to display the story on the page.
  */
 getRawStory().then(parseStory).then((processedStory) => {
-    console.log(processedStory);
+    show(processedStory)
+    // console.log(processedStory);
+    fillBlank()
 });
