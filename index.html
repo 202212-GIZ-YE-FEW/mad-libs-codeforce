@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 
-    <audio  autoplay>
+    <audio autoplay>
         <source id="audio" src="audio/Jumanji.mp3">
     </audio>
 
@@ -18,26 +18,27 @@
         <img src="Images/logo.webp" alt="logo" id="logo">
     </div>
 
-<div class="contanier">
+    <div class="contanier">
 
-    <div class="item">
-        <div class="text madLibsEdit">
+        <div class="item">
+            <div class="text madLibsEdit">
+            </div>
         </div>
+
+        <div class="item">
+            <button type="button" id="confirmBtn"></button>
+            <button id="cancelBtn"></button>
+        </div>
+
+        <div class="item" id="modal">
+            <div class="text madLibsPreview"></div>
+        </div>
+
+        <span id="overlay"></span>
+
     </div>
-
-    <div class="item">
-        <button type="button" id="confirmBtn"></button>
-        <button id="cancelBtn"></button>
-    </div>
-
-    <div class="item" id="modal">
-        <div class="text madLibsPreview"></div>
-    </div>
-
-    <span id="overlay"></span>
-
-</div>
-<script src="do-not-touch.js"></script>
-<script src="madlibs.js"></script>
+    <script src="do-not-touch.js"></script>
+    <script src="madlibs.js"></script>
 </body>
+
 </html>
