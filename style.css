@@ -141,6 +141,8 @@ button:nth-child(2) {
     color: #580d06;
     font-weight: bolder;
     border-radius: 5px;
+    padding-inline: 10px;
+    background: #c39f66;
 }
 
 .item:nth-child(3) {
