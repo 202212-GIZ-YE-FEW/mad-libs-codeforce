@@ -107,7 +107,7 @@ function fillBlank() {
             blanks[i].textContent = e.target.value;
         });
         input.addEventListener("keypress", (event) => {
-            if (event.key === "Enter") {
+            if (event.key === "Enter" && i+1<inputs.length) {
                 inputs[i + 1].focus()
             }
         });
