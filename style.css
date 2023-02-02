@@ -80,6 +80,14 @@ button:nth-child(2) {
     z-index: 9;
     background-color: rgba(0, 0, 0, .5);
 }
+.overlay button{
+    background-image: url("Images/cancel.png");
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 10;
+
+}
 
 
 
@@ -148,7 +156,6 @@ button:nth-child(2) {
 
     .overlay {
         width: 55rem;
-        height: 100vh;
     }
 
 }
