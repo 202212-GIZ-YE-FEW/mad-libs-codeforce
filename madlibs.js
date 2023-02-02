@@ -35,7 +35,7 @@ function parseStory(rawStory) {
     // change srting to array
 
     // to split the story text based on the spaces between words and store them in a new array
-    const rawStoryElement = rawStory.split(' ')
+    const rawStoryElement = rawStory.split(' ');
 
     // loops the array of words to check if they contain the required pattern specified in the regex
     return rawStoryElement.map((word) => {
@@ -133,8 +133,12 @@ confirmBtn.addEventListener('click', function (e) {
 // clears all the inputs whenever cancel button in clicked
 cancelBtn.addEventListener('click', function (e) {
     const inputs = document.querySelectorAll("input");
+    const modal = document.getElementById('modal')
     inputs.forEach((input) => {
         input.value = ""
+    })
+    modal.forEach((input) => {
+        modal.value = ""
     })
 })
 
@@ -148,6 +152,10 @@ for (const button of buttons) {
         button.classList.remove("clicked");
     });
 }
+
+// play audio
+let audio = document.getElementById("audio");
+audio.play();
 
 
 /**
