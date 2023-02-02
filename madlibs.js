@@ -73,7 +73,7 @@ function parseStory(rawStory) {
 const edit = document.querySelector(".madLibsEdit");
 const preview = document.querySelector(".madLibsPreview");
 
-// replaces
+
 function show(processedStory) {
     let inputStory = ''
     let showStory = ''
@@ -133,8 +133,10 @@ confirmBtn.addEventListener('click', function (e) {
 // clears all the inputs whenever cancel button in clicked
 cancelBtn.addEventListener('click', function (e) {
     const inputs = document.querySelectorAll("input");
-    inputs.forEach((input) => {
+    const blanks = document.querySelectorAll(".previewElement");
+    inputs.forEach((input, i) => {
         input.value = ""
+        blanks[i].textContent = `[${input.getAttribute('placeholder')}]`
     })
 })
 
