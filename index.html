@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>Jumanji mad libs</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <div class='madLibsEdit'>
-    </div>
-    <div class='madLibsPreview'>
+</head>
+
+<body>
+
+   <audio autoplay loop >
+        <source id="audio" src="audio/Jumanji.mp3">
+   </audio>
+
+    <div class="contanier">
+
+        <div class="logo-container">
+            <img src="Images/logo.webp" alt="logo" id="logo">
+        </div>
+
+        <div class="item">
+            <div class="text madLibsEdit">
+            </div>
+        </div>
+
+        <div class="item">
+            <button type="button" id="confirmBtn"></button>
+            <button type="button" id="cancelBtn"></button>
+        </div>
+
+        <div class="item" id="modal">
+            <div class="text madLibsPreview"></div>
+        </div>
+
+        <span id="overlay">
+            <button type="button"></button>
+        </span>
+
     </div>
     <script src="do-not-touch.js"></script>
     <script src="madlibs.js"></script>
-  </body>
+</body>
+
 </html>
